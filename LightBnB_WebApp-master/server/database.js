@@ -70,7 +70,8 @@ const getAllReservations = function(guest_id, limit = 10) {
             GROUP BY properties.id, reservations.id
             ORDER BY reservations.start_date
             LIMIT $2;`, [guest_id, limit])
-    .then(result => result.rows);
+    .then(result => result.rows)
+    .catch(err => console.log(err.message));
 };
 exports.getAllReservations = getAllReservations;
 
